@@ -23,7 +23,8 @@ def add_task():
     # Log the task addition
     print(f"Task added: {task['task']} with ID: {task['id']}")
     
-    return jsonify(tasks=tasks)
+    # Return tasks and count of tasks
+    return jsonify(tasks=tasks, task_count=len(tasks))
 
 @app.route('/toggle/<task_id>', methods=['POST'])
 def toggle_task(task_id):
@@ -33,7 +34,8 @@ def toggle_task(task_id):
     # Log the task toggle
     print(f"Task toggled: {task['task']} with ID: {task['id']} - Completed: {task['completed']}")
     
-    return jsonify(tasks=tasks)
+    # Return tasks and count of tasks
+    return jsonify(tasks=tasks, task_count=len(tasks))
 
 @app.route('/delete/<task_id>', methods=['POST'])
 def delete_task(task_id):
@@ -43,7 +45,8 @@ def delete_task(task_id):
     # Log the task deletion
     print(f"Task deleted with ID: {task_id}")
     
-    return jsonify(tasks=tasks)
+    # Return tasks and count of tasks
+    return jsonify(tasks=tasks, task_count=len(tasks))
 
 if __name__ == "__main__":
     app.run(debug=True)
